@@ -8,7 +8,7 @@ def index(request):
         .filter(show=True)\
         .all().order_by("-id")
     context = {
-        'contacts': contacts
+        'contacts': contacts,
     }
     return render(
         request, 
@@ -20,7 +20,8 @@ def contact(request, contact_id):
     # single_contact = Contact.objects.filter(pk=contact_id).first()
     single_contact = get_object_or_404(Contact, pk=contact_id, show=True)
     context = {
-        'contact': single_contact
+        'contact': single_contact,
+        'site_tittle': f'{single_contact.first_name} {single_contact.last_name} - '
     }
     return render(
         request, 
