@@ -65,3 +65,5 @@ def contact(request, contact_id):
         'contact/contact.html',
         context
     )
+    
+    
