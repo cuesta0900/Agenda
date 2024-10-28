@@ -4,6 +4,15 @@ from contact import models
 
 
 class ContactForm(forms.ModelForm):
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*',
+                
+            }
+        )
+    )
+    
     first_name = forms.CharField(#sobrescreve o first_name da Model
         widget=forms.TextInput(
             attrs={ #atributos do HTML
@@ -18,7 +27,8 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = models.Contact
         fields = (#tuple
-            'first_name', 'last_name', 'phone', 'email', 'description', 'category'
+            'first_name', 'last_name', 'phone', 'email', 'description', 'category',
+            'picture'
         )
         
     def clean(self): #tratativa dos erros do form
