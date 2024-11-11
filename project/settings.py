@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 import dj_database_url
 from environ import Env
 env = Env()
@@ -36,9 +35,10 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cuesta-agenda.up.railway.app']
 
-PORT = os.getenv('PORT', 8000)
+CSRF_TRUSTED_ORIGINS = ['https://cuesta-agenda.up.railway.app']
+
 # Application definition
 
 INSTALLED_APPS = [
